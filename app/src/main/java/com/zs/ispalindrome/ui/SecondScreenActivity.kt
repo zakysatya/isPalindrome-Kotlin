@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import com.bumptech.glide.Glide
 import com.zs.ispalindrome.R
 import com.zs.ispalindrome.databinding.ActivitySecondScreenBinding
 
@@ -29,7 +30,11 @@ class SecondScreenActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+    }
 
+    override fun onResume() {
+        super.onResume()
+        setUserSelected()
     }
 
     private fun initState() {
@@ -40,10 +45,21 @@ class SecondScreenActivity : AppCompatActivity() {
         }
         user = intent.getStringExtra("user").toString()
         binding.tvUser.text = user
-    }
+      }
 
-    fun setUser(username: String, email: String) {
-        binding.tvUsernameSelected.text = username
-        binding.tvEmailSelected.text = username
+    private fun setUserSelected() {
+        val sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)
+        val username = sharedPreferences.getString("username", "").toString()
+        val email = sharedPreferences.getString("email", "").toString()
+        val avatar = sharedPreferences.getString("avatar", "").toString()
+
+        if (username.isNotEmpty() && email.isNotEmpty() && avatar.isNotEmpty()) {
+            binding.tvUsernameSelected.text = username
+            binding.tvEmailSelected.text = email
+
+            Glide.with(this)
+                .load(avatar)
+                .into(binding.ivPhoto)
+        }
     }
 }
