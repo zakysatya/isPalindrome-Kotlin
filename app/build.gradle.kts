@@ -7,6 +7,10 @@ android {
     namespace = "com.zs.ispalindrome"
     compileSdk = 34
 
+    buildFeatures {
+        viewBinding = true
+    }
+
     defaultConfig {
         applicationId = "com.zs.ispalindrome"
         minSdk = 21
