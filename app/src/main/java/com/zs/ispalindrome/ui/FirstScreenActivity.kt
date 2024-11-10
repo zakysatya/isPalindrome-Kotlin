@@ -17,10 +17,10 @@ class FirstScreenActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnCheck.setOnClickListener {
-            val username = binding.etName.text.toString()
+            val user = binding.etName.text.toString()
             val palindrome = binding.etPalindrome.text.toString()
 
-            if (username.isEmpty()) {
+            if (user.isEmpty()) {
                 // Snackbar.make(binding.root, "Username cannot be empty", Snackbar.LENGTH_SHORT).show()
                 binding.etName.error = "Username can't empty"
                 return@setOnClickListener
@@ -48,13 +48,13 @@ class FirstScreenActivity : AppCompatActivity() {
         }
 
         binding.btnNext.setOnClickListener {
-            val username = binding.etName.text.toString()
-            if (username.isEmpty()) {
+            val user = binding.etName.text.toString()
+            if (user.isEmpty()) {
                 binding.etName.error = "Username can't empty"
                 return@setOnClickListener
             }
             val intent = Intent(this, SecondScreenActivity::class.java)
-            intent.putExtra("username", username)
+            intent.putExtra("user", user)
             startActivity(intent)
         }
 

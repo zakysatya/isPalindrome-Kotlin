@@ -5,4 +5,8 @@
     <color name="placeholder">#6867775C</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="divider">#E2E3E4</color>
+    <color name="orange">#FFB3A0</color>
+
 </resources>
