@@ -15,8 +15,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.zs.ispalindrome.R
 import com.zs.ispalindrome.model.User
-import com.zs.ispalindrome.ui.SecondScreenActivity
-import com.zs.ispalindrome.viewmodel.SelectedViewModel
 
 class UsernameAdapter(private val usernames: ArrayList<User>,private val sharedPreferences: SharedPreferences): RecyclerView.Adapter<UsernameAdapter.UsernameViewHolder>() {
     class UsernameViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.zs.ispalindrome.R
 import com.zs.ispalindrome.databinding.ActivityFirstScreenBinding
@@ -19,7 +20,6 @@ class FirstScreenActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)
-        binding.etName.setText(sharedPreferences.getString("user", ""))
         initState()
 
         binding.btnCheck.setOnClickListener {
@@ -79,7 +79,14 @@ class FirstScreenActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             window.navigationBarColor = getColor(R.color.primary_color)
         }
+        val sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)
 
+        binding.etName.setText(sharedPreferences.getString("user", ""))
+
+        if (sharedPreferences.getString("avatar", "").toString().isNotEmpty())
+            Glide.with(this)
+            .load(sharedPreferences.getString("avatar", "").toString())
+            .into(binding.ivPhoto)
     }
 
     fun setPhoto() {
